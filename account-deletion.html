@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fresh List — Data Deletion</title>
+  <meta name="description" content="Data & Account Deletion instructions for Fresh List shopping list app." />
+  <style>
+    :root {
+      --bg: #05060a;
+      --card: rgba(12, 14, 22, 0.65);
+      --text: #d9e7ff;
+      --muted: #94a3b8;
+      --neon-1: #00fff5;
+      --neon-2: #39ff14;
+      --neon-3: #ff00ff;
+      --accent: #6ee7ff;
+      --radius: 18px;
+      --shadow: 0 0 24px rgba(0, 255, 245, 0.15), 0 0 48px rgba(255, 0, 255, 0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height: 1.6;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 10% 10%, rgba(0,255,245,0.08), transparent 70%),
+                  radial-gradient(900px 700px at 90% 20%, rgba(255,0,255,0.06), transparent 70%),
+                  radial-gradient(700px 600px at 30% 90%, rgba(57,255,20,0.06), transparent 70%),
+                  var(--bg);
+      overflow-x: hidden;
+    }
+
+    #space {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      filter: blur(0.2px) saturate(110%);
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px 88px;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border: 1px solid rgba(110, 231, 255, 0.35);
+      border-radius: 999px;
+      color: var(--accent);
+      background: linear-gradient(180deg, rgba(110,231,255,0.08), rgba(110,231,255,0));
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.1;
+      margin: 0 0 10px 0;
+      text-shadow:
+        0 0 6px rgba(0,255,245,0.4),
+        0 0 14px rgba(255,0,255,0.25);
+    }
+
+    .card {
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 22px 22px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background:
+        radial-gradient(600px 120px at 10% 0%, rgba(0,255,245,0.12), transparent 70%),
+        radial-gradient(600px 120px at 90% 0%, rgba(255,0,255,0.10), transparent 70%);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .content {
+      padding: 26px 22px 10px;
+    }
+
+    h2 {
+      font-size: clamp(18px, 3.2vw, 24px);
+      margin-top: 26px;
+      margin-bottom: 10px;
+      color: #e6f9ff;
+      text-shadow: 0 0 8px rgba(57,255,20,0.25);
+    }
+
+    p, li { color: #d4e5ff; }
+
+    .callout {
+      border-left: 3px solid var(--neon-1);
+      padding: 10px 14px;
+      margin: 12px 0;
+      background: linear-gradient(90deg, rgba(0,255,245,0.06), rgba(0,0,0,0));
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(110,231,255,0.45);
+    }
+    a:hover { border-bottom-style: solid; }
+
+    footer {
+      margin-top: 30px;
+      padding: 18px 22px 26px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background:
+        radial-gradient(600px 120px at 10% 100%, rgba(0,255,245,0.12), transparent 70%),
+        radial-gradient(600px 120px at 90% 100%, rgba(255,0,255,0.10), transparent 70%);
+    }
+
+    .scanlines::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      mix-blend-mode: overlay;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <div class="scanlines"></div>
+
+  <main class="wrap card" role="main">
+    <header class="header">
+      <div class="title">
+        <span class="badge">Data Deletion</span>
+        <h1>Fresh List</h1>
+      </div>
+      <div class="meta">
+        Effective date: <time>22 August 2025</time>
+      </div>
+    </header>
+
+    <section class="content">
+      <p>
+        Fresh List does not require user accounts. All shopping list data is stored locally on your device and never uploaded to our servers. However, as part of compliance with Google Play requirements, this page explains how users can delete their data.
+      </p>
+
+      <h2>How to Delete Shopping List Data</h2>
+      <ul>
+        <li>Clear the app’s storage from your device settings.</li>
+        <li>Or uninstall the app — this removes all local shopping list data.</li>
+      </ul>
+
+      <h2>How to Delete Advertising Data</h2>
+      <p>
+        Ads in Fresh List are served by Google AdMob. You can manage or delete your advertising data via:
+      </p>
+      <ul>
+        <li><a href="https://myadcenter.google.com/" target="_blank">Google My Ad Center</a></li>
+        <li>Reset or delete your Advertising ID in Android device settings.</li>
+      </ul>
+
+      <h2>Contact Us</h2>
+      <p>
+        If you need further help with data deletion, email us at <a href="mailto:support@freshlist.app">support@freshlist.app</a>.
+      </p>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Fresh List. Data deletion information page.</div>
+    </footer>
+  </main>
+
+  <script>
+    (function() {
+      const canvas = document.getElementById('space');
+      const ctx = canvas.getContext('2d');
+      let w, h, dpr, particles;
+      const colors = [
+        getComputedStyle(document.documentElement).getPropertyValue('--neon-1').trim(),
+        getComputedStyle(document.documentElement).getPropertyValue('--neon-2').trim(),
+        getComputedStyle(document.documentElement).getPropertyValue('--neon-3').trim()
+      ];
+
+      function resize() {
+        dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+        w = Math.floor(window.innerWidth);
+        h = Math.floor(window.innerHeight);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        init();
+      }
+
+      function init() {
+        const count = Math.floor((w * h) / 18000);
+        particles = new Array(count).fill(0).map(() => spawn());
+      }
+
+      function spawn() {
+        const speed = 0.2 + Math.random() * 0.8;
+        return {
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * speed,
+          vy: (Math.random() - 0.5) * speed,
+          r: 0.6 + Math.random() * 1.8,
+          c: colors[(Math.random() * colors.length) | 0],
+          a: 0.25 + Math.random() * 0.6
+        };
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < -5 || p.x > w + 5 || p.y < -5 || p.y > h + 5) {
+            Object.assign(p, spawn());
+            p.x = Math.random() * w; p.y = Math.random() * h;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.c;
+          ctx.globalAlpha = p.a;
+          ctx.shadowColor = p.c;
+          ctx.shadowBlur = 12;
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(step);
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+      step();
+    })();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
