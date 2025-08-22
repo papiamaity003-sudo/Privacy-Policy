@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fresh List — Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for Fresh List shopping list app." />
+  <style>
+    :root {
+      --bg: #05060a;
+      --card: rgba(12, 14, 22, 0.65);
+      --text: #d9e7ff;
+      --muted: #94a3b8;
+      --neon-1: #00fff5;   /* cyan */
+      --neon-2: #39ff14;   /* green */
+      --neon-3: #ff00ff;   /* magenta */
+      --accent: #6ee7ff;   /* light cyan */
+      --radius: 18px;
+      --shadow: 0 0 24px rgba(0, 255, 245, 0.15), 0 0 48px rgba(255, 0, 255, 0.08);
+    }
+
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.6;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 10% 10%, rgba(0,255,245,0.08), transparent 70%),
+                  radial-gradient(900px 700px at 90% 20%, rgba(255,0,255,0.06), transparent 70%),
+                  radial-gradient(700px 600px at 30% 90%, rgba(57,255,20,0.06), transparent 70%),
+                  var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* Canvas sits behind for particles */
+    #space {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      filter: blur(0.2px) saturate(110%);
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px 88px;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border: 1px solid rgba(110, 231, 255, 0.35);
+      border-radius: 999px;
+      color: var(--accent);
+      background: linear-gradient(180deg, rgba(110,231,255,0.08), rgba(110,231,255,0));
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.1;
+      margin: 0 0 10px 0;
+      text-shadow:
+        0 0 6px rgba(0,255,245,0.4),
+        0 0 14px rgba(255,0,255,0.25);
+    }
+
+    .card {
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 22px 22px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background:
+        radial-gradient(600px 120px at 10% 0%, rgba(0,255,245,0.12), transparent 70%),
+        radial-gradient(600px 120px at 90% 0%, rgba(255,0,255,0.10), transparent 70%);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .content {
+      padding: 26px 22px 10px;
+    }
+
+    h2 {
+      font-size: clamp(18px, 3.2vw, 24px);
+      margin-top: 26px;
+      margin-bottom: 10px;
+      color: #e6f9ff;
+      text-shadow: 0 0 8px rgba(57,255,20,0.25);
+    }
+
+    p, li {
+      color: #d4e5ff;
+    }
+
+    .callout {
+      border-left: 3px solid var(--neon-1);
+      padding: 10px 14px;
+      margin: 12px 0;
+      background: linear-gradient(90deg, rgba(0,255,245,0.06), rgba(0,0,0,0));
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(110,231,255,0.45);
+    }
+    a:hover { border-bottom-style: solid; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 720px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .tile {
+      padding: 16px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 18px 22px 26px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background:
+        radial-gradient(600px 120px at 10% 100%, rgba(0,255,245,0.12), transparent 70%),
+        radial-gradient(600px 120px at 90% 100%, rgba(255,0,255,0.10), transparent 70%);
+    }
+
+    /* Subtle scanline overlay for retro-future vibe */
+    .scanlines::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      mix-blend-mode: overlay;
+      z-index: -1;
+    }
+
+    /* Accessibility helpers */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    Privacy Policy for Fresh List
+    NOTES (remove if you like):
+    1) Replace CONTACT EMAIL below with your real support email.
+    2) Update the Effective Date.
+    3) Publish via GitHub Pages. This file is fully standalone.
+  -->
+
+  <canvas id="space" aria-hidden="true"></canvas>
+  <div class="scanlines"></div>
+
+  <main class="wrap card" role="main">
+    <header class="header">
+      <div class="title">
+        <span class="badge" aria-label="Document type">Privacy Policy</span>
+        <h1>Fresh List</h1>
+      </div>
+      <div class="meta">
+        Effective date: <time id="effective">22 August 2025</time>
+      </div>
+    </header>
+
+    <section class="content" id="policy">
+      <p>
+        Fresh List ("we", "our", or "us") is a shopping list application. This Privacy Policy explains how the app handles information when you use Fresh List.
+      </p>
+
+      <div class="callout" role="note">
+        <strong>Quick summary:</strong> We do not collect or store any personal data on our servers. Your lists are saved locally on your device. The app displays ads via Google AdMob, which may process certain data for advertising and analytics.
+      </div>
+
+      <h2>Information We Collect</h2>
+      <p>
+        <strong>We do not collect personally identifiable information (PII).</strong> Fresh List does not require you to create an account and does not transmit your shopping data to our servers.
+      </p>
+      <p>
+        Your lists and preferences are stored locally on your device using local storage or an on-device database. You can delete this data at any time by clearing the app's data or uninstalling the app.
+      </p>
+
+      <h2>Advertising (Google AdMob)</h2>
+      <p>
+        Fresh List uses <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google AdMob</a> to serve ads. AdMob and its partners may collect and process information such as device identifiers, approximate location, IP address, ad performance data, and app interactions in order to deliver, personalize, and measure ads, and to prevent fraud.
+      </p>
+      <p>
+        For details on Google's data practices, please review the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> and <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">AdMob Help Center</a>.
+      </p>
+      <p>
+        If you are in the EEA/UK or other regions requiring consent, the app may display a consent form provided by Google to obtain your choices for personalized or non-personalized ads.
+      </p>
+
+      <h2>Cookies and Tracking</h2>
+      <p>
+        The app itself does not use cookies. Ad services may use mobile advertising identifiers and similar technologies for the purposes described above.
+      </p>
+
+      <h2>Data Storage & Retention</h2>
+      <p>
+        Shopping lists and settings are kept on your device only. We do not operate any backend servers for user data. You control retention by deleting items, clearing app data, or uninstalling the app.
+      </p>
+
+      <h2>Security</h2>
+      <p>
+        Because your data stays on your device, please keep your device secure (e.g., using a passcode). We implement reasonable safeguards in the app, but no method of storage is 100% secure.
+      </p>
+
+      <h2>Children's Privacy</h2>
+      <p>
+        Fresh List is not directed to children under 13. We do not knowingly collect personal information from children. If you believe a child has provided personal information to AdMob through ad interactions, please contact us and/or review Google's guidance.
+      </p>
+
+      <h2>Your Choices</h2>
+      <div class="grid">
+        <div class="tile">
+          <strong>Manage local data</strong>
+          <ul>
+            <li>Edit or delete lists within the app.</li>
+            <li>Clear the app's storage from device settings to remove all local data.</li>
+            <li>Uninstalling the app removes all locally stored data.</li>
+          </ul>
+        </div>
+        <div class="tile">
+          <strong>Ads personalization</strong>
+          <ul>
+            <li>Use <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a> to manage ad personalization with Google.</li>
+            <li>On Android, you can reset or limit the Advertising ID in device settings.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>International Transfers</h2>
+      <p>
+        AdMob and its partners may process data on servers located in different countries. These processors are responsible for applying appropriate safeguards as described in their policies.
+      </p>
+
+      <h2>Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. We will revise the "Effective date" above and, where required by law, seek your consent to material changes.
+      </p>
+
+      <h2>Contact Us</h2>
+      <p>
+        If you have questions or requests regarding this Privacy Policy, please contact us at
+        <a href="mailto:support@freshlist.app">papiamaity003@gmail.com</a>.
+      </p>
+    </section>
+
+    <footer>
+      <div>
+        © <span id="year"></span> Fresh List. This page is provided for transparency and to help you comply with Google Play requirements.
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // ---- Neon particles background (lightweight canvas) ----
+    (function() {
+      const canvas = document.getElementById('space');
+      const ctx = canvas.getContext('2d');
+      let w, h, dpr, particles;
+
+      const colors = [
+        getComputedStyle(document.documentElement).getPropertyValue('--neon-1').trim(),
+        getComputedStyle(document.documentElement).getPropertyValue('--neon-2').trim(),
+        getComputedStyle(document.documentElement).getPropertyValue('--neon-3').trim()
+      ];
+
+      function resize() {
+        dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+        w = Math.floor(window.innerWidth);
+        h = Math.floor(window.innerHeight);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        init();
+      }
+
+      function init() {
+        const count = Math.floor((w * h) / 18000); // density-based
+        particles = new Array(count).fill(0).map(() => spawn());
+      }
+
+      function spawn() {
+        const speed = 0.2 + Math.random() * 0.8;
+        return {
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * speed,
+          vy: (Math.random() - 0.5) * speed,
+          r: 0.6 + Math.random() * 1.8,
+          c: colors[(Math.random() * colors.length) | 0],
+          a: 0.25 + Math.random() * 0.6
+        };
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        for (let p of particles) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < -5 || p.x > w + 5 || p.y < -5 || p.y > h + 5) {
+            Object.assign(p, spawn());
+            p.x = Math.random() * w; p.y = Math.random() * h;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.c;
+          ctx.globalAlpha = p.a;
+          ctx.shadowColor = p.c;
+          ctx.shadowBlur = 12;
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(step);
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+      step();
+    })();
+
+    // Update footer year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
